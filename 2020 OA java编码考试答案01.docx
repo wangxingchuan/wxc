@@ -1,0 +1,459 @@
+# 2020 深圳新员工信息安全考试
+
+
+1. 编码规范中关于国际化的说法错误的是
+  A. 如果输入源或输出目标直接支持，尽可能直接使用Unicode进行输入输出。
+  B. 对于使用默认编码方式的第三方代码或者遗留代码，可应用适配器模式，将返回的字符串转换成Unicode内码
+  C. 字符串大小写转换时，应加上Locale.US
+  D. 尽量采用平台默认的字符编码方式。
+  你的答案: 未答正确答案 D
+  解析：无
+
+2. 编码规范中关于资源管理的说法错误的是
+  A. 重用一个已经创建的对象比创建一个新的对象要好得多，除非确实需要重新创建。
+  B. 过期的对象引用不会再被使用，无需特殊处理。
+  C. 将对象存入HashSet，或作为key存入HashMap(或HashTable)后，必须确保该对象的hashcode值不变，避免因为hashcode值变化导致不能从集合内删除该对象，进而引起内存泄漏的问题
+  D. 执行IO操作时，应该在finally里关闭IO资源
+  你的答案: 未答正确答案 B
+  解析：无
+
+3. 在下列哪个场景中，不需要加密和数字签名机制保证数据安全
+  A. 同一信任域内组件间传递
+  B. 无SSL传输通道或者代价太高
+  C. 敏感数据需要持久化长久保存
+  D. 序列化传输敏感数据
+  你的答案: 未答正确答案 A
+  解析：无
+
+4. 以下说法正确的有
+  A. 程序中的一些状态多直接用数字表示，如函数执行成功return 1
+  B. 对于表示函数执行错误，多用约定的错误码来标识
+  C. 用有意义的静态变量或者枚举来代替数字型的程序状态，如函数执行成功return SUCCESS
+  D. 程序中的魔鬼数字并不可怕，需要所有开发人员努力理解这些数字的含义
+  你的答案: 未答正确答案 C
+  解析：无
+
+5. 关于命名规范，以下说法错误的有
+  A. 直接使用数字，造成代码难以理解，也难以维护。应采用有意义的静态变量或枚举来代替。例外情况，有些特殊情况下，如循环或比较时采用数字0，-1，1，这些情况可采用数字。
+  B. 方法的命名，用动词和动宾结构，并采用首字母小写的驼峰命名法
+  C. 类和接口的命名，采用首字母小写的驼峰命名法
+  D. 变量、属性命名，使用名词，并采用首字母小写的驼峰命名法
+  你的答案: 未答正确答案 C
+  解析：无
+
+6. 下列JDK中的API调用中若使用不当易遭致OS命令注入的是
+  A. java.lang.System.load()
+  B. java.lang.Runtime.exec()
+  C. java.lang.Thread.start()
+  D. java.lang.Process.waitFor()
+  你的答案: 未答正确答案 B
+  解析：无
+
+7. 对于注释的描述错误的是
+  A. 公有和保护方法注释内容：列出方法的一句话功能简述、功能详细描述、输入参数、输出参数、返回值、异常等
+  B. 对重载父类的方法必须进行@Override声明
+  C. 注释应与其描述代码位置相邻，放在所注释代码下方或左方，并与代码采用同样缩进
+  D. 一般单行注释用//，块注释用/* */，JavaDoc注释用/** */
+  你的答案: 未答正确答案 C
+  解析：无
+
+8. 下列错误使用异常的做法是
+  A. 在程序中使用异常处理还是使用错误返回码处理，根据是否有利于程序结构来确定，并且异常和错误码不应该混合使用，推荐使用异常
+  B. 一个方法不应抛出太多类型的异常。throws/exception子句标明的异常最好不要超过三个
+  C. 异常捕获尽量不要直接 catch (Exception ex)，应该把异常细分处理
+  D. 程序内抛出的异常本身就可说明异常的类型、抛出条件，可不填写详细的描述信息。捕获异常后用exception.toString()取到详细信息后保存
+  你的答案: 未答正确答案 D
+  解析：无
+
+9. 对于下面的代码片段，假设PasswordManager的实例可以被非信任代码所访问，且changePassword()方法调用属于敏感操作，则下列说法中不正确是的
+  public class PasswordManager
+  {
+    public final Object lock = new Object(); 
+
+    public void changePassword() throws FileNotFoundException
+    {
+        synchronized (lock)
+        { 
+            // . . .
+        }
+    }
+  }
+  A. changePassword()方法中应该包含安全管理器检查，以确认调用代码是否具有该操作权限
+  B. 应该将lock成员变量的可见性声明为private
+  C. 可以省去changePassword()方法中的同步块，直接将changePassword()方法声明为synchronized修饰的同步方法
+  D. changePassword()方法不应该抛出FileNotFoundException异常
+  你的答案: 未答正确答案 C
+  解析：无
+
+10. 推荐的防御SQL注入的最佳方式是
+  A. 限制外部输入的长度
+  B. 使用存储过程
+  C. 使用预编译语句--java.sql.PreparedStatement
+  D. 对外部输入进行转义
+  你的答案: 未答正确答案 C
+  解析：无
+
+11. 关于线程以下说法错误的有
+   A. 不是每次新起一个线程都要使用Thread.setName(“…”)设置线程名，可以根据具体需要来定
+   B. 不要依赖线程调度器、线程优先级和yield()方法
+   C. 对多线程访问的变量、方法，必须加锁保护，避免出现多线程并发访问引起的问题
+   D. 线程使用时，要在代码框架中使用线程池，避免创建不可复用的线程；禁止在循环中创建新线程，否则会引起JVM资源耗尽
+   你的答案: 未答正确答案 A
+   解析：无
+
+12. 下列命名不符合命名规范的是
+   A. 变量 String customerName;
+   B. 常量 static final int MAX_USER_NUM = 200;
+   C. 方法 public boolean Finished()
+   D. 类 public class OrderInformation {}
+   你的答案: 未答正确答案 C
+   解析：无
+
+13. 为了能在所有的平台上对所有别名、快捷方式以及符号链接进行一致地解析，下面代码[1]处应该填入的代码是
+   public static void main(String[] args)
+   {
+         File f = new File(System.getProperty("user.home")
+                 + System.getProperty("file.separator") + args[0]);
+         String path = [1];
+         if (!isInSecureDir(Paths.get(path)))
+         {
+             // Refer to Rule 3.5 for the details of isInSecureDir()
+             throw new IllegalArgumentException();
+         }
+         if (!validate(path))
+         {   
+             // Validation
+             throw new IllegalArgumentException();
+         }
+         /* … */
+   }
+   A. f.getAbsolutePath()
+   B. f.getCanonicalPath()
+   C. f.getCanonicalFile()
+   D. f.getAbsoluteFile()
+   你的答案: 未答正确答案 B
+   解析：无
+
+14. 安全编码中关于运行环境的说法不正确的是
+   A. 不要使用危险的许可与目标组合
+   B. 将所有安全敏感代码都放在一个jar包中，签名再密封
+   C. 生产代码不能包含任何调试入口点
+   D. 禁用字节码验证
+   你的答案: 未答正确答案 D
+   解析：无
+
+15. 如下关于泛型的描述不正确的是
+   A. 在集合中使用泛型
+   B. 方法的设计可优先考虑泛型
+   C. 类的设计可优先考虑泛型
+   D. 优先使用数组，而不是泛型集合
+   你的答案: 未答正确答案 D
+   解析：无
+
+16. 下面说法或者语句不符合公司编程规范的排版要求的是
+   A. 将排版风格固化到IDE的代码格式化配置文件中，但是允许团队中成员保持按照喜欢使用不同的风格
+   B. 控制文件的长度，最好不要超过500行
+   C. 将常量的定义都放在一起，将有调用关系的方法尽量放在一起
+   D. 方法与方法、类名与import、import与包名之间、相对独立的程序块之间、变量说明后需增加空行，来提升可读性
+   你的答案: 未答正确答案 A
+   解析：无
+
+17. 安全编程规范中，下面说法错误的是
+   A. 不要将Buffer对象封装的数据暴露给不可信代码
+   B. 避免完全依赖URLClassLoader和java.util.jar提供的默认自动签名认证机制
+   C. 日志工具对象logger应声明为public static final
+   D. 方法发生异常时要恢复到之前的对象状态
+   你的答案: 未答正确答案 C
+   解析：无
+
+18. 若程序中需要获取操作系统登录用户名，应采取下列哪种方法来获取
+   A. 提示用户输入
+   B. 由环境变量获取:System.getenv("USER")
+   C. 由JVM属性获取:System.getProperty("user.name")
+   D. 启动程序的时候由程序参数传入
+   你的答案: 未答正确答案 C
+   解析：无
+
+19. 下列不符合编码规范的是
+   A. 数据库、IO操作等需要使用结束close()的对象必须在try-catch-finally 的finally中close()
+   B. 数组声明的时候使用 int[] index ，而不要使用 int index[]
+   C. 覆写equals方法时，应同时覆写hashCode方法
+   D. 对编程错误使用受检异常（checked exception），对可恢复的情况使用运行时异常（runtime exception）
+   你的答案: 未答正确答案 D
+   解析：无
+
+20. 如下关于编码规范建议的描述错误的是
+   A. 标注为@deprecated的方法，是由于各种原因被JDK废弃的方法，为了保持兼容性而没有删除，新写的代码应避免使用这些方法，而应该使用JDK推荐的代替方法
+   B. 值类（value classes）的设计，可考虑实现Comparable接口，方便在集合中实现对象的搜索、排序、计算极值等
+   C. 程序中无可避免的会使用第三方提供的代码/jar包，而这些第三方的代码/jar包所提供的接口，是我们无法控制的，即使是公司/部门内部提供的接口，因此，当程序中（大量）使用了第三方提供的代码/jar包时，可以使用Adapter模式，封装中间层，以避免第三方的变更对已有程序的影响
+   D. 使用JDK自带的API或广泛使用的开源库，同时也建议有能力的同事自己写类似的功能
+   你的答案: 未答正确答案 D
+   解析：无
+
+21. 对于文件IO操作，下列哪些说法是正确的
+   A. 临时文件使用完毕应该及时删除
+   B. 禁止在单个输入流上创建多份buffered wrapper
+   C. 避免在共享目录操作文件
+   D. 创建文件时指定合理的访问权限
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+22. 下列关于编码相关说法，正确的有
+   A. 将对象存入HashSet，或作为key存入HashMap(或HashTable)后，必须确保该对象的hashcode值不变，避免因为hashcode值变化导致不能从集合内删除该对象，进而引起内存泄漏的问题
+   B. 回车换行符在不同操作系统下是有区别的，如果需要换行，尽量用PrintStream、PrintWriter的println来代替在字符串中使用硬编码换行符。也可以使用System.getProperty("line.separator")获取运行时环境的换行符
+   C. 程序中一些没有用到的变量或者值因为它们不影响程序的正常逻辑功能，可以不用删除
+   D. 在Java的IO操作中，尽量使用带缓冲的实现
+   你的答案: 未答正确答案 A,B,D
+   解析：无
+
+23. 下列哪些是常见的敏感异常
+   A. java.io.FileNotFoundException
+   B. java.sql.SQLException
+   C. java.net.BindException
+   D. java.lang.OutOfMemoryError
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+24. 下述排版代码中，符合编码规范的是
+   1）
+   if (someCondition) 
+   {
+       doStart();
+   }
+   2）
+   Object o = new Object(); 
+   Object b = null;
+   3）
+   String xmlName = "", nodeVal = "";
+   4）
+   int a = 0;
+   A. 1)
+   B. 2)
+   C. 3)
+   D. 4)
+   你的答案: 未答正确答案 A,B,D
+   解析：无
+
+25. 如下哪些代码不符合编码规范
+   1）
+   void compute() 
+   {
+     input();
+     flags = 0x0080;
+     output();
+   }
+
+2）
+/*< DTSyyyyyy xxxxxx begin*/
+private boolean mAlreadyShowFinish = false;
+private boolean mIsClickEmptySpace = false;
+/*DTSyyyyyy xxxxxx end >*/
+3）
+private void insertHistory(String workfSeq, String workfType, String recSeq, int sortOrder, String orderSeq, String workfID, int region, String subSys, String orderID, String procSystem, String platType, String neID, String oprid, String prepayType, String feedback_cmd)
+{
+...
+}
+4）
+int sample (int inputVal) 
+{
+    int workingVal = inputVal;
+    workingVal = workingVal * CurrentMuiniplier(workingVal);
+    workingVal = workingVal * CurrentAdder(workingVal);
+    ...
+    return workingVal;
+}
+A. 1)
+B. 2)
+C. 3)
+D. 4)
+你的答案: 未答正确答案 A,B,C
+解析：无
+
+26. 关于安全编码规范说法正确的有
+   A. 编写自定义类加载器时应调用超类的getPermission()函数
+   B. 若所有安全敏感代码（例如进行权限控制或者用户名密码校验的代码）没有放到同一个受信任的JAR包中，攻击者可以先加载恶意代码（使用相同的类名），然后操纵受信任的敏感代码执行恶意代码，导致受信任代码的执行逻辑被劫持。
+   C. 生产代码不能包含任何调试入口点
+   D. 使用随机数生成器ava.util.Random类来保护安全敏感应用或者敏感数据
+   你的答案: 未答正确答案 A,B,C
+   解析：无
+
+27. 日志的等级有哪些
+   A. info
+   B. warn
+   C. error
+   D. fatal
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+28. 下列说法描述正确的是
+   A. 接口（public）方法调用时，应对参数做合法性检查，以保证程序的健壮性和正确性
+   B. 调用方法获取返回结果后必须进行有效性校验，以确保后续代码在运行过程中不会抛出异常或产生逻辑错误
+   C. 遗漏break，可能导致程序误进入下一个case分支，执行了预期之外的代码，导致异常
+   D. 在将一个数组对象复制成另外一个数组对象时，不要自己使用循环复制，可以使用JAVA提供的System.arraycopy()功能来复制数据对象，这样做可以避免出错，而且效率会更高
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+29. 以下哪些场景可能会导致攻击者绕过安全检查
+   A. 检查整个调用栈
+   B. 只检查当前调用者
+   C. Java applets 允许给自己授权执行任意代码
+   D. 覆写安全检查执行的方法
+   你的答案: 未答正确答案 B,C,D
+   解析：无
+
+30. 哪些情况下，普通的套接字就可以满足需求，而不需要采用性能开销巨大的SSLSocke安全传输机制性
+   A. 套接字上传输的数据不敏感
+   B. 套接字的网络路径从来不越出信任边界
+   C. 数据虽然敏感，但是已经过恰当加密
+   D. 在不安全的传输通道中传输敏感数据
+   你的答案: 未答正确答案 A,B,C
+   解析：无
+
+31. 关于局部变量说法，符合编程规范的说法是
+   A. 不要定义不会被用到的局部变量
+   B. 几乎每一个局部变量的声明都应该包含一个初始化表达式
+   C. 变量定义的“就近原则”
+   D. 同一个局部变量在前后表达不同的含义，会使代码理解起来比较困难，不利于维护。一个局部变量只应该表达一种含义
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+32. 下面关于日志的描述，符合编程规范的有
+   A. 禁止在日志中保存口令、密钥和其他敏感数据
+   B. 日志的记录，不要使用 System.out 与 System.err 进行控制台打印，应该使用专用的日志工具(比如：slf4j+logback)进行处理
+   C. 推荐与具体实现有关的日志记录info级，一般的业务处理日志用debug级，不影响业务进行的错误用warn级，而记录异常的日志应为error或fatal级
+   D. 日志信息准确、繁简得当，满足快速定位的需要
+   你的答案: 未答正确答案 A,B,D
+   解析：无
+
+33. 当外部输入用于以下哪些场景的情况下需要进行合法性验证
+   A. 输入改变系统状态
+   B. 输入作为数组下标
+   C. 输入作为格式化字符串
+   D. 输入作为内存分配的尺寸参数
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+34. 以下哪些方式是被禁止的
+   A. ${JDK_PATH}/bin/java -Djava.security.manager ApplicationName
+   B. ${JDK_PATH}/bin/java -agentlib:libname=options -Djava.security.manager ApplicationName
+   C. ${JDK_PATH}/bin/Java -Dcom.sun.management.jmxremote.port=8000 ApplicationName
+   D. ${JDK_PATH}/bin/java -agentlib:libname=options ApplicationName
+   你的答案: 未答正确答案 B,C,D
+   解析：无
+
+35. 以下说法正确的有
+   A. 一个系统或者模块应该统一规划异常类型和返回码的含义
+   B. 在Java的IO操作中，尽量使用带缓冲的实现
+   C. 在将一个数组对象复制成另外一个数组对象时，不要自己使用循环复制，可以使用JAVA提供的System.arraycopy()功能来复制数据对象，这样做可以避免出错，而且效率会更高。
+   D. 系统非正常运行产生的异常捕获后，如果不对该异常进行处理，则应该记录日志
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+36. 关于异常，以下说法正确的有
+   A. 运行时异常使用RuntimeException的子类来表示，不用在可能抛出异常的方法声明上加throws子句
+   B. 方法发生异常时要恢复到之前的对象状态
+   C. 非运行期异常是从Exception继承而来的，必须在方法声明上加throws子句
+   D. 不要抑制或者忽略已检查异常
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+37. 关于多线程的说法正确的是
+   A. 不要使用Thread.stop方法，因为该方法本质是不安全的，使用它可能会导致数据遭到破坏
+   B. 使用Thread对象的setUncaughtExceptionHandler方法注册Runtime异常的处理者
+   C. 使用线程安全集合在多线程间共享可变数据
+   D. 多线程访问同一个可变变量，需增加同步机制
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+38. 为防止敏感数据传输过程中被窃听和非法篡改。在以下哪些场景中，需要加密和数字签名的机制保证数据安全
+   A. 序列化或传输敏感数据
+   B. 无SSL传输通道或者代价太高
+   C. 敏感数据需要长久保存
+   D. 安全通过传输（如HTTPS、SSL）
+   你的答案: 未答正确答案 A,B,C
+   解析：无
+
+39. 循环嵌套的时候，下面哪些情况需要尽量避免
+   A. 实例化对象
+   B. try/catch
+   C. 开启IO
+   D. 连接数据库
+   你的答案: 未答正确答案 A,B,C,D
+   解析：无
+
+40. 关于如下代码段，说法正确的有
+   class WhoKnows
+   {
+     static String sentence = "I don't know.";
+     public static void main(String[] args)
+     {
+           String sentence = "I know!"; 
+           System.out.println(sentence); 
+      }
+   }
+   A. 方法的局部变量遮蔽了类的静态变量
+   B. System.out.println打印的是"I know!"
+   C. System.out.println打印的是"I don't know."
+   D. 方法的静态变量遮蔽了类的局部变量
+   你的答案: 未答正确答案 A,B
+   解析：无
+
+41. 对于java.io.FileNotFoundException异常，捕获并抛出另一种非敏感类型的异常再抛出到信任边界之外
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 T
+   解析：无
+
+42. 对外部字符串输入做校验之前需要先对其进行归一化，推荐使用的归一化格式是NFKC
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 T
+   解析：无
+
+43. 由于序列化将对象输出为二进制数据流而非可读的明文形式，所以在传输或保存序列化的敏感数据时不需要加密
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 F
+   解析：无
+
+44. 实现Serializable接口的可序列化类应该显式private static final声明 serialVersionUID
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 T
+   解析：无
+
+45. 使用类名调用静态方法，而不要使用实例或表达式来调用
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 T
+   解析：无
+
+46. 覆写equals方法时，应同时覆写hashCode方法
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 T
+   解析：无
+
+47. 当一个自定义的类装载器必须要覆写getPermissions()方法的时候，必须要在给源代码赋予任何权限之前直接调用基类的getPermissions方法来获知默认的系统规则
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 T
+   解析：无
+
+48. 参数化查询是一种简单有效的防止SQL注入的查询方式，应该被优先考虑使用
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 T
+   解析：无
+
+49. 常量命名，由全大写单词组成，单词间用下划线分隔，且使用 static final修饰
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 T
+   解析：无
+
+50. 数组声明的时候使用int index[]，而不要使用int[] index
+   T. 正确
+   F. 错误
+   你的答案: 未答正确答案 F
+   解析：无
