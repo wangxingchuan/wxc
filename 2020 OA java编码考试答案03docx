@@ -1,0 +1,393 @@
+1、以下程序输出的结果有可能是：
+ public static void main(String[] args) {
+        CompletableFuture.supplyAsync(() -> Thread.currentThread().getName())
+            .thenApply(i -> i + ",")
+            .whenComplete((r, e) -> System.out.print(r + Thread.currentThread().getName()));
+    }
+    A、main,main
+    B、ForkJoinPool.commonPool-worker-1,main
+    C、,main
+    D、nullmain
+
+正确答案:B
+
+2、关于线程任务异常处理说法正确的是:
+    A、Java多线程程序中，所有线程都不允许抛出未捕获的checked exception
+    B、Java多线程程序中，所有线程都不允许抛出未捕获的unchecked exception，必须在子线程内处理完成
+    C、Java多线程程序中，所有子线程可能出现的异常都必须在子线程内处理完成
+    D、抛出异常时子线程会结束，同时可以由主线程通过try catch来捕获子线程异常
+正确答案:A
+
+3、下面函数返回结果是：
+    public int testException(){
+       int flag = -1;
+       try{
+
+       }catch(Exception e){
+          flag = 2;
+       }finlly{
+          return 0;
+       }
+
+       return flag;
+    }
+    A、 -1
+    B、 2
+    C、 0
+    D、都不是
+    
+ 正确答案:c
+ 
+ 
+ 4、以下哪个空格的使用时有误的
+    1）
+    String[][] x = {{ "foo" }};
+    2）
+    (String str) -> str.length()
+    3）
+    catch (FooException | BarException e)
+    4）
+    if ((employee.flags & HOURLEY_FLAG) && (employee.age > RETIRED_AGE))
+    A、1）
+    B、2）
+    C、3）
+    D、4）
+    
+  正确答案:A
+  
+  5、字节流和字符流的read()方法为什么返回的值是什么类型？
+        A、int
+        B、char  
+        C、byte 
+        D、boolean
+        
+  6、Socket不提供但是SSLSocket提供的主要保护不包括
+      A、完整性保护
+      B、认证
+      C、保密性（隐私保护）
+      D、可移植性
+      
+   正确答案:D
+   
+ 7、下面关于异常的说法错误的是
+    A、方法抛出过多的异常，会增加客户端异常处理的工作。所以一个方法不应抛出超过6个异常
+    B、对可恢复的情况使用受检异常（checked exception），对编程错误 使用运行时异常（runtime exception）
+    C、在finally块中不要使用return、break或continue使finally块非正常结束
+    D、不要通过一个空的catch块忽略异常
+    
+ 正确答案:A
+ 
+8、关于日志打印的说法错误的是
+  A、不在日志中打印敏感信息
+  B、在日志中不能输出口令、密钥和其他敏感信息
+  C、如果在记录的日志中包含未经校验的不可信数据，则可能导致日志注入漏洞
+  D、若因为特殊原因必须要打印日志，则用固定长度的星号（@）代替输出的敏感信息
+  
+ 正确答案：D 
+ 
+ 9、如下关于常量的命名符合编码规范的是回答正确
+    A、static int MAXUSERCNT = 200;
+    B、static int MAX_USER_CNT = 200;
+    C、static final int MAXUSERCNT = 200;
+    D、static final int MAX_USER_CNT = 200;
+    正确答案：D    提交答案：D
+    
+10、以下哪个角色与个人数据不相关：回答正确
+    A、数据主体
+    B、数据访问者
+    C、数据处理者
+    D、数据控制者
+    正确答案：B    提交答案：B
+    
+ 11、下面方法的命名不符合编码规范的是
+    A、public void sendMessage()
+    B、public void onCreate()
+    C、public void AddKeyListener()
+    D、public void draw()
+    正确答案：C    提交答案：C
+        
+   正确答案:A
+   
+   12、下面的说法错误的是
+      A、对于返回数组或者容器的方法，应返回长度为0的数组或者容器，代替返回nul
+      B、使用JDK自带的API或广泛使用的开源库，不要自己写类似的功能
+      C、不要使用已标注为@deprecated的方法
+      D、某些情况下我们希望指定某些枚举常量为某个固定值以代表特殊意义。返回该固定值的方法可以基于ordinal方法来实现
+      正确答案：D    提交答案：D
+      
+      
+   13、以下代码中1和2处代码的输出分别是
+        public class Email 
+         { 
+                public String address; 
+
+                public Email(String address) 
+               { 
+                        this.address = address; 
+                } 
+
+                public int hashCode() 
+               { 
+                        int result = address.hashCode(); 
+                        return result; 
+                } 
+
+                public static void main(String[] args) 
+              { 
+                        HashSet<Email> set = new HashSet<Email>(); 
+                        Email email = new Email("huawei.com"); 
+                        set.add(email); 
+                        email.address = "silong.com";
+                        System.out.println(set.contains(email)); //1
+                        set.remove(email);
+                        System.out.println(set.size());  //2
+                } 
+        }
+        A、false,1
+        B、true,1
+        C、false,0
+        D、true,0
+        正确答案：A    
+        
+        
+        
+ 14、关于如下代码说法正确的是
+    public static void main(String[] args) {
+        try {
+            System.out.println("hello:" + func());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static int func() throws Exception {
+        int a = 1;
+        for (int i = 1; i < 2; i++) {
+            try {
+                throw new Exception("xx");
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+               continue;
+            }
+        }
+        return 0;
+    }
+    A、最终会抛出异常
+    B、最终会打印hello并抛出异常
+    C、最终会打印0
+    D、最终会打印hello:0
+
+    正确答案:D
+    
+ 15、以下说法正确的是
+    A、方法参数不要超过7个
+    B、无需索引时采用for-each代替传统的for循环
+    C、用“==”比较2个字符串是否相等
+    D、Java中volatile变量的+= , -= , *= 等复合赋值操作是不可分割的原子读改写
+    正确答案：B    提交答案：B
+  
+  
+ 16、下面哪个类型的命名需要采用小驼峰命名
+    A、枚举类型
+    B、枚举值
+    C、方法
+    D、注解
+    正确答案：C    提交答案：C
+    
+ 17、以下哪个是符合规范的标识符
+      A、mName
+      B、name_
+      C、userName
+      D、kName
+      正确答案：C    提交答案：C
+      
+ 18、对内置锁的描述错误的是
+    A、内置锁是一个互斥锁，不仅读写互斥并且读读也互斥，最多只有一个线程能够获得该锁
+    B、内置锁是非公平锁，线程在竞争synchronized锁时并不遵循先到等待队列就先获得锁
+    C、内置锁是可重入锁，如果已经获取了一个锁对象，在还没释放时又要执行该锁对象的另一个代码块或方法，则不需要再次给这个对象加锁就可以直接执行
+    D、内置锁是显示锁，需要显示进行 lock 以及 unlock 操作
+    正确答案：D    提交答案：D
+    
+ 19、关于NullPointException异常下面说明错误的是？
+      A、直接捕获异常，并对该异常进行处理，保证程序正常执行不会报错即可。
+      B、对于调用开源三方件，三方件中抛出NullPointerException异常时，可以捕获NullPointerException，并对该异常进行处理。
+      C、非开源三方件的NullPointException异常需要对根因进行定位处理，不是只处理异常即可。
+      D、在判断字符串是有效时不可以根据try捕获异常的方式判断其不是有效字符串。
+      正确答案：A    
+      
+      
+  20、如下的代码片段说法
+    public class SensitiveHash {
+        private Hashtable<Integer, String> ht = new Hashtable<Integer, String>();
+
+        public void removeEntry(Object key) {
+            ht.remove(key);
+        }
+    }回答正确
+    A、代码实例化一个Hashtable，并定义了一个removeEntry()方法删除其条目
+    B、由于该方法被声明为是public且non-final的，所以是安全的
+    C、removeEntry()这个方法被认为是敏感的，因为哈希表中包含敏感信息
+    D、应该使用安全管理器检查来防止Hashtable实例中的条目被恶意删除
+    正确答案：B    提交答案：B
+    
+    
+    21、以下代码有什么编码规范问题
+          public static CellStyle getSuitCellStyle(XSSFWorkbook wb, int fontSize, int color, boolean bold, int underlineWidth, int fontColor) {
+              ...
+              ...
+             return cellStyle;
+          }
+          A、代码过长
+          B、代码圈复杂度高
+          C、尽量不要使用可变数量参数
+          D、代码入参过多
+          正确答案：D  
+          
+ 22、方法嵌套一般不超过()层回答错误
+      A、 4
+      B、 5
+      C、 6
+      D、 7
+      正确答案：A    
+      
+ 23、哪个是xml格式的反序列化常见的第三方组件
+      A、XMLDecoder
+      B、XMLStream
+      C、XDecoder
+      D、XMLTrans
+      正确答案：A    提交答案：A
+      
+ 24、TransformerFactory 设置下面哪个feature可使xslt在转换XML过程中避免被注入执行任意程序恶意代码的问题
+      A、http://apache.org/xml/features/disallow-doctype-decl
+      B、http://javax.xml.XMLConstants/feature/secure-processing
+      C、http://xml.org/sax/features/external-general-entities
+      D、http://xml.org/sax/features/external-parameter-entities
+      正确答案：B    
+      
+  25、下列说法正确的是:
+      A、代码块左大括号可以独占一行
+      B、if 语句块如果比较简单, 可以不写前后大括号
+      C、代码块左大括号必须放在行尾
+      D、结束大括号不必独占一行
+      正确答案：C    
+      
+   26、java应用无法创建自己的Runtime实例，只能通过什么方法来取得当前JVM的运行时对象
+      A、Runtime.exit()
+      B、Runtime.getRuntime()
+      C、 waitFor()
+      正确答案：B    提交答案：B
+      
+   27、关于数值运算说法错误的是
+        A、Java数据类型的合法取值范围是不对称的，所以对最小值取负时，会导致溢出
+        B、Math类中还有subtractExact()和negateExact()方法，提供了安全的除法或取绝对值的运算方法
+        C、除数为0的运算可能会导致程序终止或拒绝服务（DoS）
+        D、程序必须避免数学运算的结果超出特定的整数类型的数值范围，使用产生溢出的数值，会导致错误的判断， 产生安全风险
+        正确答案：B   
+        
+        
+    28、下列哪个符合类，枚举，接口命名规范？
+        A、XmlService
+        B、marcoPolo
+        C、XMLService
+        D、info
+        正确答案：A    提交答案：A
+        
+    29、以下关于线程说法错误的是
+        A、针对线程安全性，需要进行文档（javadoc）说明
+        B、如果一个类的文档中未描述其行为的并发性情况，使用者有可能做出错误假设，程序就可能缺少足够的同步，或者过度同步
+        C、java doc文档需要重点描述业务功能，对线程安全性简单说明即可，不需要详细说明
+        D、当一个类的实例或者静态方法被并发使用的时候，这个类的行为如何，是该类与其客户端程序建立的约定的重要组成部分
+        正确答案：C    
+        
+        
+     30、非静态内部类可以实现下列哪种接口？
+        A、Serializable
+        B、Externalizabl
+        C、Comparable
+        D、以上都不可以
+        正确答案：C    
+        
+        
+     31、抛出异常细节信息中，以下正确的是
+        A、抛出异常细节信息不需要记录的很详细。
+        B、抛出异常信息中如果含有敏感信息，可以记录日志快速定位。
+        C、在抛出异常的时候，应该同时提供足够信息，以便对分析"异常是如何产生的"有帮助，比如"对该异常有贡献"的参数和变量的值等任何信息都可以做记录。
+        D、在异常细节信息记录，应注意符合公司安全红线和法律法规的要求，不要包含敏感信息或者个人信息
+        正确答案：D    
+        
+       32、关于多线程的说法错误的是
+            A、创建新线程时需指定线程名，指定线程名可以给问题定位带来很多方便
+            B、不要依赖线程调度器、线程优先级和yield()方法
+            C、多线程访问同一个共享的可变变量，需增加同步机制
+            D、采用Java1.5提供新并发工具代替wait和notify。原来wait和notify写的老代码都应该进行整改
+            正确答案：D    提交答案：D
+            
+        33、关于文件路径校验说法错误的是
+          A、文件路径校验前必须先进行标准化处理
+          B、获取文件路径时，必须使用getCanonicalPath()，禁止使用getAbsolutePath()
+          C、File.getAbsolutePath()返回文件的相对路径
+          D、使用File.getCanonicalPath()方法，它能在所有的平台上对所有别名、快捷方式以及符号链接进行一致地解析
+          正确答案：C   
+          
+         34、关于变量声明，描述正确的是（）
+            A、为方便使用，可以将需要使用的变量在方法入口处批量声明。
+            B、为方便使用可以在一行声明多个变量，如String a,b;
+            C、可按如下方式声明一个数组：String array[] = {"aaa", "bbb", "ccc"};
+            D、for 循环标题中可以接受多个变量声明
+            正确答案：D    提交答案：D
+            
+        35、对于使用默认编码方式的第三方代码或者遗留代码， 可应用适配器模式，将返回的字符串转换成什么内码
+              A、decode
+              B、uncode
+              C、Unicode
+              D、incode
+              正确答案：C    提交答案：C
+     36、下列关于equals方法的说法错误的是：
+          A、同一次运行中，同一个对象如果equals方法中用到的信息没有改变，多次调用hashCode方法返回值必须相同
+          B、覆写equals方法时，不需要同时覆写hashCode方法
+          C、如果两个对象调用equals方法时相等，则这两个对象的hashCode方法，也必须返回相同的值
+          D、如果两个对象调用equals方法时不相等，则这两个对象的hashCode方法，不要求其返回值不同，但是出于性能考虑，但最好能不同
+          正确答案：B    提交答案：B
+          
+      37、关于日志打印描述错误的是
+          A、不能直接使用不可信数据记录日志
+          B、不可信数据打印日志不会泄露敏感信息
+          C、打印日志前需要对不可信数据进行安全校验
+          D、打印日志前需要对不可信数据进行净化处理
+          正确答案：B    提交答案：B
+          
+  38、保存口令等敏感数据应优先使用_______，使用结束后_______，可降低敏感数据泄露的风险(    )
+          A、String，等待垃圾收集器回收
+          B、String，置为0
+          C、char[]，等待垃圾收集器回收
+          D、char[]，清0
+          正确答案：D    提交答案：D
+          
+   39、下面哪个说法是错误的
+      A、厂商会为自己的JAR文件进行签名。这可以证明代码的真实性，但却不能保证代码的安全性
+      B、当系统需要加载不可信的代码时，必须安装安全管理器
+      C、当一个自定义的类装载器要覆写getPermissions()方法的时候，必须要在给源代码赋予任何权限之前先调用基类的getPermissions方法来获取默认的系统规则
+      D、进行安全检查的方法必须声明为private或static
+      正确答案：D    提交答案：D
+      
+   40、使用SSLSocket代替Socket的原因？
+      A、效率更快
+      B、更安全 
+      C、更简单
+      D、减低效率
+      正确答案：B    提交答案：B
+      
+      
+   41、处于性能的考虑，初始化一些哪些集合时，最好指定其初始化容量
+        A、ArrayList
+        B、StringBuilder
+        C、HashSet
+        D、HashMap
+        正确答案：ABCD    
+        
+  42、关于国际化的说法正确的有哪些？
+      A、不要依赖平台默认的字符编码方式，使用UTF-8
+      B、字符串大小写转换、数字格式化为西方数字时，必须加上Locale.CHINESE
+      C、在所有的输入输出环节，指明正确的编码方式，进行正确的字符到字节，或字节到字符的转换
+      D、对于使用默认编码方式的第三方代码或者遗留代码， 可应用适配器模式，将返回的字符串转换成Unicode内码
+      正确答案：ACD   
