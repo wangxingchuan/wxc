@@ -29,3 +29,12 @@
 ### 5.registerBeanPostProcessors(beanFactory)
 
 ### 6. finishBeanFactoryInitialization(beanFactory)
+
+
+
+
+版本发布涉及三个大类，
+	1. 面向生产，服务，合作方，一线等渠道的软件发布(内部测试，聚信及EMS厂商，一线准入，第三方认证机构，用服，消费者，供应链及EMS厂商，矿鸿，测试用户，产品研发，Beta测试用户，消费者，合作方)
+	2. 面向消费者的软件发布(用于政企客户，用服(Beta测试用户，消费者，保修，高维))等
+面向开发者的软件发布 (测试用户，开发者)![Uploading image.png…]()
+
